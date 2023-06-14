@@ -42,80 +42,91 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(50, 136);
+            label1.Location = new Point(25, 70);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(98, 25);
+            label1.Size = new Size(68, 15);
             label1.TabIndex = 0;
-            label1.Text = "Grupa Krwi";
+            label1.Text = "Grupa Krwi:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(152, 136);
+            label2.Location = new Point(96, 70);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(59, 25);
+            label2.Size = new Size(38, 15);
             label2.TabIndex = 1;
             label2.Text = "label2";
             // 
             // button1
             // 
-            button1.Location = new Point(50, 326);
+            button1.Location = new Point(25, 177);
+            button1.Margin = new Padding(2);
             button1.Name = "button1";
-            button1.Size = new Size(112, 34);
+            button1.Size = new Size(109, 22);
             button1.TabIndex = 2;
             button1.Text = "Wyniki";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(50, 178);
+            label3.Location = new Point(48, 98);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(52, 25);
+            label3.Size = new Size(34, 15);
             label3.TabIndex = 3;
             label3.Text = "Ulga:";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(152, 180);
+            label4.Location = new Point(86, 98);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(59, 25);
+            label4.Size = new Size(38, 15);
             label4.TabIndex = 4;
             label4.Text = "label4";
             // 
             // button2
             // 
-            button2.Location = new Point(50, 253);
+            button2.Location = new Point(25, 139);
+            button2.Margin = new Padding(2);
             button2.Name = "button2";
-            button2.Size = new Size(144, 36);
+            button2.Size = new Size(109, 22);
             button2.TabIndex = 5;
-            button2.Text = "Umów wizytę";
+            button2.Text = "Twoje wizyty";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(93, 43);
+            label5.Location = new Point(48, 19);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(46, 25);
+            label5.Size = new Size(30, 15);
             label5.TabIndex = 6;
             label5.Text = "Imię";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(97, 86);
+            label6.Location = new Point(48, 43);
+            label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(87, 25);
+            label6.Size = new Size(57, 15);
             label6.TabIndex = 7;
             label6.Text = "Nazwisko";
             // 
             // button3
             // 
-            button3.Location = new Point(63, 384);
+            button3.Location = new Point(25, 218);
+            button3.Margin = new Padding(2);
             button3.Name = "button3";
-            button3.Size = new Size(131, 38);
+            button3.Size = new Size(109, 23);
             button3.TabIndex = 8;
             button3.Text = "Wyloguj";
             button3.UseVisualStyleBackColor = true;
@@ -123,9 +134,9 @@
             // 
             // CustomerWindow
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(293, 450);
+            ClientSize = new Size(164, 261);
             Controls.Add(button3);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -135,6 +146,7 @@
             Controls.Add(button1);
             Controls.Add(label2);
             Controls.Add(label1);
+            Margin = new Padding(2);
             Name = "CustomerWindow";
             Text = "Form2";
             ResumeLayout(false);

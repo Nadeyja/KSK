@@ -8,37 +8,38 @@ namespace KSK
         {
             InitializeComponent();
         }
-        bool connectionMethodAsync()
+        private int loginToApp(MySqlConnection connection)
         {
-            MySqlConnection connection = new MySqlConnection("datasource= localhost; database=ksk;port=3306; username = root; password= qwerty");
-            
             connection.Open();
-
-            using var command = new MySqlCommand("select * from uzytkownicy where login = '" + login.Text + "' AND haslo = '" + password.Text + "'", connection);
+            using var command = new MySqlCommand("select ID_Uzytkownik from uzytkownicy where login = '" + login.Text + "' AND haslo = '" + password.Text + "'", connection);
             MySqlDataReader reader = command.ExecuteReader();
             if (reader.Read())
             {
-                MessageBox.Show("Successfully Sign In!", "VINSMOKE MJ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return true;
+                int id = reader.GetInt32(0);
+                MessageBox.Show("Uda³o siê zalogowaæ, id u¿ytkownika: " + id, "", MessageBoxButtons.OK);
+                connection.Close();
+                return id;
             }
             else
             {
-                MessageBox.Show("Username And Password Not Match!", "VINSMOKE MJ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                MessageBox.Show("B³êdne dane logowania", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                connection.Close();
+                return 0;
             }
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            bool canLogin = connectionMethodAsync();
-            if (canLogin) { 
-                CustomerWindow CustWindow = new CustomerWindow();
+            int id = loginToApp(Program.connectionMethodAsync());
+            if (id != 0)
+            {
+                CustomerWindow CustWindow = new CustomerWindow(id);
                 this.Hide();
                 CustWindow.Show();
             }
         }
         private void LogInWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            Program.closeMainForms();
         }
     }
 }
