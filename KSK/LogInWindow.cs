@@ -16,13 +16,13 @@ namespace KSK
             if (reader.Read())
             {
                 int id = reader.GetInt32(0);
-                MessageBox.Show("Uda³o siê zalogowaæ, id u¿ytkownika: " + id, "", MessageBoxButtons.OK);
+                MessageBox.Show("Uda?o si? zalogowa?, id u?ytkownika: " + id, "", MessageBoxButtons.OK);
                 connection.Close();
                 return id;
             }
             else
             {
-                MessageBox.Show("B³êdne dane logowania", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("B??dne dane logowania", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 connection.Close();
                 return 0;
             }
