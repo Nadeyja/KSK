@@ -41,7 +41,7 @@ CREATE TABLE `klient` (
 
 LOCK TABLES `klient` WRITE;
 /*!40000 ALTER TABLE `klient` DISABLE KEYS */;
-INSERT INTO `klient` VALUES (1,1,'Asd','Asd'),(2,3,'Klient','Klientowski'),(3,5,'Klient','Klientelski'),(4,6,'Nadzieja','Hamerlak');
+INSERT INTO `klient` VALUES (1,1,'Asd','Asd'),(2,3,'Klient','Klientowski'),(3,5,'Klient','Klientelski'),(4,6,'Nadzieja','Hamerlak'),(5,7,'Mateusz','Morawiecki');
 /*!40000 ALTER TABLE `klient` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -97,7 +97,7 @@ CREATE TABLE `termin` (
 
 LOCK TABLES `termin` WRITE;
 /*!40000 ALTER TABLE `termin` DISABLE KEYS */;
-INSERT INTO `termin` VALUES (1,'2023-06-14 02:48:08','Niezaakceptowany',4),(2,'2023-06-29 02:48:08','Niezaakceptowany',4),(3,'2023-07-01 02:48:08','Niezaakceptowany',3);
+INSERT INTO `termin` VALUES (1,'2023-06-14 02:48:08','Niezaakceptowany',4),(2,'2023-06-29 02:48:08','Niezaakceptowany',4),(3,'2023-07-01 02:48:08','Niezaakceptowany',3),(4,'2023-06-29 10:10:00','Niezaakceptowany',4),(5,'2023-06-22 12:30:00','Niezaakceptowany',4),(6,'2023-07-01 02:48:08','Niezaakceptowany',4),(7,'2023-06-14 02:48:08','Niezaakceptowany',4);
 /*!40000 ALTER TABLE `termin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -149,7 +149,7 @@ CREATE TABLE `ulga` (
 
 LOCK TABLES `ulga` WRITE;
 /*!40000 ALTER TABLE `ulga` DISABLE KEYS */;
-INSERT INTO `ulga` VALUES (1,1),(0,2),(2,3),(3,4);
+INSERT INTO `ulga` VALUES (1,1),(0,2),(2,3),(3,4),(0,5);
 /*!40000 ALTER TABLE `ulga` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,7 +174,7 @@ CREATE TABLE `uzytkownicy` (
 
 LOCK TABLES `uzytkownicy` WRITE;
 /*!40000 ALTER TABLE `uzytkownicy` DISABLE KEYS */;
-INSERT INTO `uzytkownicy` VALUES ('klient','asd',1),('pracownik1','qwert',2),('klient2','zxcv',3),('prac','qwerty',4),('kli','asd',5),('nadeya','nadeya',6);
+INSERT INTO `uzytkownicy` VALUES ('klient','asd',1),('pracownik1','qwert',2),('klient2','zxcv',3),('prac','qwerty',4),('kli','asd',5),('nadeya','nadeya',6),('mati123','zxc',7);
 /*!40000 ALTER TABLE `uzytkownicy` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -215,4 +215,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-14  3:41:48
+-- Dump completed on 2023-06-14 12:42:03
