@@ -75,6 +75,7 @@
             Controls.Add(dateTimePicker1);
             Controls.Add(button1);
             Margin = new Padding(4, 5, 4, 5);
+            MaximizeBox = false;
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);

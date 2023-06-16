@@ -31,6 +31,8 @@
             label6 = new Label();
             label5 = new Label();
             button3 = new Button();
+            button1 = new Button();
+            button2 = new Button();
             SuspendLayout();
             // 
             // label6
@@ -55,8 +57,8 @@
             // 
             // button3
             // 
-            button3.Location = new Point(65, 163);
-            button3.Margin = new Padding(2);
+            button3.Location = new Point(67, 229);
+            button3.Margin = new Padding(2, 2, 2, 2);
             button3.Name = "button3";
             button3.Size = new Size(92, 23);
             button3.TabIndex = 10;
@@ -64,14 +66,37 @@
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(67, 128);
+            button1.Name = "button1";
+            button1.Size = new Size(92, 25);
+            button1.TabIndex = 11;
+            button1.Text = "Terminy";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(67, 175);
+            button2.Name = "Zlec transport";
+            button2.Size = new Size(92, 23);
+            button2.TabIndex = 12;
+            button2.Text = "button2";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // EmployeeWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(224, 291);
+            Controls.Add(button2);
+            Controls.Add(button1);
             Controls.Add(button3);
             Controls.Add(label6);
             Controls.Add(label5);
+            MaximizeBox = false;
             Name = "EmployeeWindow";
             Text = "Form1";
             ResumeLayout(false);
@@ -83,5 +108,7 @@
         private Label label6;
         private Label label5;
         private Button button3;
+        private Button button1;
+        private Button button2;
     }
 }

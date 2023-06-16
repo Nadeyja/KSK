@@ -29,12 +29,25 @@ namespace KSK
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            int id = loginToApp(Program.connectionMethodAsync());
+            MySqlConnection connection = Program.connectionMethodAsync();
+            int id = loginToApp(connection);
             if (id != 0)
             {
-                CustomerWindow CustWindow = new CustomerWindow(id);
-                this.Hide();
-                CustWindow.Show();
+                connection.Open();
+                using var command = new MySqlCommand("select ID_Uzytkownik from klient where ID_Uzytkownik = " + id, connection);
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    CustomerWindow customerWindow = new CustomerWindow(id);
+                    this.Hide();
+                    customerWindow.Show();
+                }
+                else
+                {
+                    EmployeeWindow employeeWindow = new EmployeeWindow(id);
+                    this.Hide();
+                    employeeWindow.Show();
+                }
             }
         }
         private void LogInWindow_FormClosing(object sender, FormClosingEventArgs e)

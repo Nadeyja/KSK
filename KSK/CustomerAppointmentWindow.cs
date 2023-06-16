@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace KSK
 {
-    
+
     public partial class Form1 : Form
     {
         private int id_klient;
@@ -20,7 +20,7 @@ namespace KSK
         private MySqlCommand command;
         private MySqlDataReader reader;
 
-        
+
         public Form1(int id)
         {
             id_klient = id;
@@ -28,7 +28,7 @@ namespace KSK
             con.Open();
             DateTime date;
             string status;
-            command = new MySqlCommand("select data, status from termin where ID_Klient = " + id_klient+" order by data", con);
+            command = new MySqlCommand("select data, status from termin where ID_Klient = " + id_klient + " order by data", con);
             reader = command.ExecuteReader();
             while (reader.Read())
             {
