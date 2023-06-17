@@ -8,21 +8,38 @@ namespace KSK
         {
             InitializeComponent();
         }
-        private int loginToApp(MySqlConnection connection)
+        public int loginToApp(MySqlConnection connection)
         {
             connection.Open();
-            using var command = new MySqlCommand("select ID_Uzytkownik from uzytkownicy where login = '" + login.Text + "' AND haslo = '" + password.Text + "'", connection);
+            using var command = new MySqlCommand("select ID_Uzytkownik from uzytkownicy where login = '" + login.Text + "'", connection);
             MySqlDataReader reader = command.ExecuteReader();
             if (reader.Read())
             {
                 int id = reader.GetInt32(0);
-                MessageBox.Show("Uda?o si? zalogowa?, id u?ytkownika: " + id, "", MessageBoxButtons.OK);
                 connection.Close();
-                return id;
+                connection.Open();
+                using var command2 = new MySqlCommand("select haslo from uzytkownicy where ID_Uzytkownik = " + id, connection);
+                MySqlDataReader reader2 = command2.ExecuteReader();
+                reader2.Read();
+                string haslo = reader2.GetString(0);
+                if (haslo == password.Text)
+                {
+                    MessageBox.Show("Uda³o siê zalogowaæ, id u¿ytkownika: " + id +"   " + haslo + "     " + password.Text, "", MessageBoxButtons.OK);
+                    connection.Close();
+
+                    return id;
+                }
+                else
+                {
+                    MessageBox.Show("B³êdne dane logowania", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    connection.Close();
+                    return 0;
+                }
+                
             }
             else
             {
-                MessageBox.Show("B??dne dane logowania", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("B³êdne dane logowania", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 connection.Close();
                 return 0;
             }
@@ -39,20 +56,18 @@ namespace KSK
                 if (reader.Read())
                 {
                     CustomerWindow customerWindow = new CustomerWindow(id);
-                    this.Hide();
                     customerWindow.Show();
+                    this.Close();
+                    
                 }
                 else
                 {
                     EmployeeWindow employeeWindow = new EmployeeWindow(id);
-                    this.Hide();
                     employeeWindow.Show();
+                    this.Close();
+                    
                 }
             }
-        }
-        private void LogInWindow_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Program.closeMainForms();
         }
     }
 }

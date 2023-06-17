@@ -1,30 +1,24 @@
 ﻿using MySqlConnector;
 using System;
-using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KSK
 {
-
-    public partial class Form1 : Form
+    public partial class EmployeeAppointmentWindow : Form
     {
         private int id_klient;
         private MySqlConnection con = Program.connectionMethodAsync();
         private MySqlCommand command;
         private MySqlDataReader reader;
-
-
-        public Form1(int id)
+        public EmployeeAppointmentWindow()
         {
-            id_klient = id;
             InitializeComponent();
             reloadListBox();
         }
@@ -35,53 +29,41 @@ namespace KSK
             DateTime date;
             string status;
             int id_termin;
-            command = new MySqlCommand("select data, status, ID_Termin from termin where ID_Klient = " + id_klient + " order by data", con);
+            command = new MySqlCommand("select data, status, ID_Termin, ID_Klient from termin order by data", con);
             reader = command.ExecuteReader();
             while (reader.Read())
             {
                 date = reader.GetDateTime(0);
                 status = reader.GetString(1);
                 id_termin = reader.GetInt32(2);
-                object termin = new Termin(date, status, id_termin);
-                listBox1.Items.Add(termin.ToString());
+                id_klient = reader.GetInt32(3);
+                object termin = new Termin(date, status, id_termin, id_klient);
+                string toList = Termin.toString(date, status, id_termin, id_klient);
+                listBox1.Items.Add(toList);
+
             }
             con.Close();
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            int id_termin = 1;
-            int temp = 1;
-            DateTime date = dateTimePicker1.Value;
-            string timeString = date.ToString("yyyy-MM-dd hh:mm:ss");
-            MessageBox.Show(timeString, "Wyniki", MessageBoxButtons.OK);
-            con.Open();
-            command = new MySqlCommand("select ID_Termin from termin order by ID_Termin", con);
-            reader = command.ExecuteReader();
-            while (reader.Read())
+            if (listBox1.SelectedItem != null)
             {
-                temp = reader.GetInt32(0);
-                if (temp > id_termin)
-                {
-                    id_termin = temp - 1;
-                    break;
-                }
-                else
-                {
-                    id_termin = temp + 1;
-                }
-
+                string termin = listBox1.SelectedItem.ToString();
+                string str_id_termin = termin.Split(' ').Last();
+                int id_termin = Int32.Parse(str_id_termin);
+                con.Open();
+                command = new MySqlCommand("update termin set status = 'Zaakceptowany' where ID_Termin = " + id_termin, con);
+                command.CommandType = CommandType.Text;
+                command.ExecuteNonQuery();
+                con.Close();
+                reloadListBox();
             }
-            con.Close();
-            Termin termin = new Termin(date, "Niezaakceptowany", id_termin);
-            con.Open();
-            command = new MySqlCommand("insert into termin (ID_Termin, data, status, ID_Klient) value (" + id_termin + ", '" + timeString + "', 'Niezaakceptowany', " + id_klient + ")", con);
-            command.CommandType = CommandType.Text;
-            command.ExecuteNonQuery();
-            con.Close();
-            reloadListBox();
+            else
+            {
+                MessageBox.Show("Termin nie zaznaczony!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             if (listBox1.SelectedItem != null)
@@ -102,5 +84,6 @@ namespace KSK
             }
 
         }
+
     }
 }

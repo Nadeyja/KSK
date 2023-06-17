@@ -33,12 +33,13 @@
             button3 = new Button();
             button1 = new Button();
             button2 = new Button();
+            button4 = new Button();
             SuspendLayout();
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(79, 54);
+            label6.Location = new Point(84, 53);
             label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
             label6.Size = new Size(57, 15);
@@ -48,7 +49,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(91, 30);
+            label5.Location = new Point(84, 29);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
             label5.Size = new Size(30, 15);
@@ -58,7 +59,7 @@
             // button3
             // 
             button3.Location = new Point(67, 229);
-            button3.Margin = new Padding(2, 2, 2, 2);
+            button3.Margin = new Padding(2);
             button3.Name = "button3";
             button3.Size = new Size(92, 23);
             button3.TabIndex = 10;
@@ -68,34 +69,46 @@
             // 
             // button1
             // 
-            button1.Location = new Point(67, 128);
+            button1.Location = new Point(67, 89);
             button1.Name = "button1";
-            button1.Size = new Size(92, 25);
+            button1.Size = new Size(92, 41);
             button1.TabIndex = 11;
-            button1.Text = "Terminy";
+            button1.Text = "Zarządzanie terminami";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
             // button2
             // 
-            button2.Location = new Point(67, 175);
-            button2.Name = "Zlec transport";
-            button2.Size = new Size(92, 23);
+            button2.Location = new Point(67, 136);
+            button2.Name = "button2";
+            button2.Size = new Size(92, 38);
             button2.TabIndex = 12;
-            button2.Text = "button2";
+            button2.Text = "Zarządzanie transportami";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(67, 180);
+            button4.Name = "button4";
+            button4.Size = new Size(92, 44);
+            button4.TabIndex = 13;
+            button4.Text = "Dodaj wyniki badań";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // EmployeeWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(224, 291);
+            Controls.Add(button4);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(button3);
             Controls.Add(label6);
             Controls.Add(label5);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "EmployeeWindow";
             Text = "Form1";
@@ -110,5 +123,6 @@
         private Button button3;
         private Button button1;
         private Button button2;
+        private Button button4;
     }
 }

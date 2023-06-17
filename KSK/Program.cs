@@ -5,24 +5,30 @@ namespace KSK
 {
     internal static class Program
     {
-        public static LogInWindow main_window = new LogInWindow();
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
-        
+
         static void Main()
         {
-            ApplicationConfiguration.Initialize();
-            Application.Run(main_window);
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            var main = new LogInWindow();
+            main.FormClosed += new FormClosedEventHandler(FormClosed);
+            main.Show();
+            Application.Run();
         }
-        public static void closeMainForms()
+
+        static void FormClosed(object sender, FormClosedEventArgs e)
         {
-            main_window.Close();
+            ((Form)sender).FormClosed -= FormClosed;
+            if (Application.OpenForms.Count == 0) Application.ExitThread();
+            else Application.OpenForms[0].FormClosed += FormClosed;
         }
         public static MySqlConnection connectionMethodAsync()
         {
-            MySqlConnection connection = new MySqlConnection("datasource= localhost; database=ksk;port=3306; username = root; password= qwertyuiop");
+            MySqlConnection connection = new MySqlConnection("datasource= localhost; database=ksk; port=3306; username = root; password= qwertyuiop");
             return connection;
         }
     }

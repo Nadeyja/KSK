@@ -31,7 +31,7 @@ CREATE TABLE `klient` (
   `nazwisko` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`ID_Klient`),
   KEY `klient_uzytkownicy_ID_Uzytkownik_fk` (`ID_Uzytkownik`),
-  CONSTRAINT `klient_uzytkownicy_ID_Uzytkownik_fk` FOREIGN KEY (`ID_Uzytkownik`) REFERENCES `uzytkownicy` (`ID_Uzytkownik`)
+  CONSTRAINT `klient_uzytkownicy_ID_Uzytkownik_fk` FOREIGN KEY (`ID_Uzytkownik`) REFERENCES `uzytkownicy` (`ID_Uzytkownik`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -41,7 +41,7 @@ CREATE TABLE `klient` (
 
 LOCK TABLES `klient` WRITE;
 /*!40000 ALTER TABLE `klient` DISABLE KEYS */;
-INSERT INTO `klient` VALUES (1,1,'Asd','Asd'),(2,3,'Klient','Klientowski'),(3,5,'Klient','Klientelski'),(4,6,'Nadzieja','Hamerlak'),(5,7,'Mateusz','Morawiecki');
+INSERT INTO `klient` VALUES (2,3,'Kamil','Tumulec'),(3,5,'Krzysztof','Kononowicz'),(4,6,'Nadzieja','Hamerlak'),(5,7,'Aleksandra','Kasprolewicz');
 /*!40000 ALTER TABLE `klient` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -69,7 +69,7 @@ CREATE TABLE `pracownik` (
 
 LOCK TABLES `pracownik` WRITE;
 /*!40000 ALTER TABLE `pracownik` DISABLE KEYS */;
-INSERT INTO `pracownik` VALUES (1,2,'Karol','Wojtyła'),(2,4,'Andrzej','Duda');
+INSERT INTO `pracownik` VALUES (1,2,'Małgorzata','Zwierzyńska'),(2,4,'Kamil','Ślimak');
 /*!40000 ALTER TABLE `pracownik` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,7 +87,7 @@ CREATE TABLE `termin` (
   `ID_Klient` int DEFAULT NULL,
   PRIMARY KEY (`ID_Termin`),
   KEY `termin_klient_ID_Klient_fk` (`ID_Klient`),
-  CONSTRAINT `termin_klient_ID_Klient_fk` FOREIGN KEY (`ID_Klient`) REFERENCES `klient` (`ID_Klient`)
+  CONSTRAINT `termin_klient_ID_Klient_fk` FOREIGN KEY (`ID_Klient`) REFERENCES `klient` (`ID_Klient`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -97,7 +97,7 @@ CREATE TABLE `termin` (
 
 LOCK TABLES `termin` WRITE;
 /*!40000 ALTER TABLE `termin` DISABLE KEYS */;
-INSERT INTO `termin` VALUES (1,'2023-06-14 02:48:08','Niezaakceptowany',4),(2,'2023-06-29 02:48:08','Niezaakceptowany',4),(3,'2023-07-01 02:48:08','Niezaakceptowany',3),(4,'2023-06-29 10:10:00','Niezaakceptowany',4),(5,'2023-06-22 12:30:00','Niezaakceptowany',4),(6,'2023-07-01 02:48:08','Niezaakceptowany',4),(7,'2023-06-14 02:48:08','Niezaakceptowany',4);
+INSERT INTO `termin` VALUES (2,'2023-06-23 02:48:08','Niezaakceptowany',4),(3,'2023-07-01 02:48:08','Zaakceptowany',3);
 /*!40000 ALTER TABLE `termin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -139,7 +139,7 @@ CREATE TABLE `ulga` (
   `stopień` int DEFAULT NULL,
   `ID_Klient` int DEFAULT NULL,
   KEY `ulga_klient_ID_Klient_fk` (`ID_Klient`),
-  CONSTRAINT `ulga_klient_ID_Klient_fk` FOREIGN KEY (`ID_Klient`) REFERENCES `klient` (`ID_Klient`)
+  CONSTRAINT `ulga_klient_ID_Klient_fk` FOREIGN KEY (`ID_Klient`) REFERENCES `klient` (`ID_Klient`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -149,7 +149,7 @@ CREATE TABLE `ulga` (
 
 LOCK TABLES `ulga` WRITE;
 /*!40000 ALTER TABLE `ulga` DISABLE KEYS */;
-INSERT INTO `ulga` VALUES (1,1),(0,2),(2,3),(3,4),(0,5);
+INSERT INTO `ulga` VALUES (0,2),(2,3),(3,4),(3,5);
 /*!40000 ALTER TABLE `ulga` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,7 +174,7 @@ CREATE TABLE `uzytkownicy` (
 
 LOCK TABLES `uzytkownicy` WRITE;
 /*!40000 ALTER TABLE `uzytkownicy` DISABLE KEYS */;
-INSERT INTO `uzytkownicy` VALUES ('klient','asd',1),('pracownik1','qwert',2),('klient2','zxcv',3),('prac','qwerty',4),('kli','asd',5),('nadeya','nadeya',6),('mati123','zxc',7);
+INSERT INTO `uzytkownicy` VALUES ('prac1','qwert',2),('klient1','qwerty',3),('prac2','KaMil2',4),('klient2','qwerty',5),('nadeya','Nadeya',6),('ola','niewiemxD',7);
 /*!40000 ALTER TABLE `uzytkownicy` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -192,7 +192,7 @@ CREATE TABLE `wyniki_badan` (
   `ID_Klient` int DEFAULT NULL,
   PRIMARY KEY (`ID_Badanie`),
   KEY `ID_Klient` (`ID_Klient`),
-  CONSTRAINT `ID_Klient` FOREIGN KEY (`ID_Klient`) REFERENCES `klient` (`ID_Klient`)
+  CONSTRAINT `ID_Klient` FOREIGN KEY (`ID_Klient`) REFERENCES `klient` (`ID_Klient`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -202,7 +202,7 @@ CREATE TABLE `wyniki_badan` (
 
 LOCK TABLES `wyniki_badan` WRITE;
 /*!40000 ALTER TABLE `wyniki_badan` DISABLE KEYS */;
-INSERT INTO `wyniki_badan` VALUES (1,'AB RH+','W normie',1),(2,'0 RH-','W normie',4),(3,'A RH-','Podwyższone leukocyty',2),(4,'AB RH+','W normie',3);
+INSERT INTO `wyniki_badan` VALUES (2,'0 RH-','W normie',4),(3,'A RH-','Podwyższone leukocyty',2),(4,'AB RH+','W normie',3),(5,'Tak','W normie',5);
 /*!40000 ALTER TABLE `wyniki_badan` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -215,4 +215,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-14 12:42:03
+-- Dump completed on 2023-06-17  3:38:50

@@ -15,12 +15,14 @@ namespace KSK
     public partial class CustomerWindow : Form
     {
         private int id_klient;
+        private int id;
         private MySqlConnection con = Program.connectionMethodAsync();
         private MySqlCommand command;
         private MySqlDataReader reader;
 
         public CustomerWindow(int id)
         {
+            this.id = id;
             InitializeComponent();
             con.Open();
             command = new MySqlCommand("select ID_Klient from klient where ID_Uzytkownik = " + id, con);
@@ -76,14 +78,11 @@ namespace KSK
         private void button3_Click(object sender, EventArgs e)
         {
             LogInWindow logInWindow = new LogInWindow();
-            this.Close();
             logInWindow.Show();
+            this.Close();
 
         }
-        private void Cust_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Program.closeMainForms();
-        }
+    
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -106,6 +105,12 @@ namespace KSK
             }
             con.Close();
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            DeleteAccountWindow DelAcc = new DeleteAccountWindow(id,id_klient,this);
+            DelAcc.ShowDialog();
         }
     }
 }
