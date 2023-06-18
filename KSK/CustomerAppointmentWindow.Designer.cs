@@ -46,14 +46,14 @@
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.CustomFormat = "yyyy-MM-dd hh:mm:ss";
+            dateTimePicker1.CustomFormat = "yyyy-MM-dd HH:mm:ss";
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.Location = new Point(67, 38);
-            dateTimePicker1.MinDate = new DateTime(2023, 6, 14, 2, 48, 8, 0);
+            dateTimePicker1.MinDate = DateTime.Now;
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(171, 23);
             dateTimePicker1.TabIndex = 1;
-            dateTimePicker1.Value = new DateTime(2023, 6, 14, 2, 48, 8, 0);
+            dateTimePicker1.Value = DateTime.Now;
             // 
             // listBox1
             // 

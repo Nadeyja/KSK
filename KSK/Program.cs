@@ -28,7 +28,7 @@ namespace KSK
         }
         public static MySqlConnection connectionMethodAsync()
         {
-            MySqlConnection connection = new MySqlConnection("datasource= localhost; database=ksk; port=3306; username = root; password= qwertyuiop");
+            MySqlConnection connection = new MySqlConnection("datasource= localhost; database=ksk; port=3306; username = root; password= qwertyuiop"); //Tutaj nale¿y wprowadziæ nazwe po³¹czenia oraz username roota oraz jego has³o
             return connection;
         }
     }

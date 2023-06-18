@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `ksk` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `ksk`;
 -- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: ksk
@@ -41,7 +39,7 @@ CREATE TABLE `klient` (
 
 LOCK TABLES `klient` WRITE;
 /*!40000 ALTER TABLE `klient` DISABLE KEYS */;
-INSERT INTO `klient` VALUES (2,3,'Kamil','Tumulec'),(3,5,'Krzysztof','Kononowicz'),(4,6,'Nadzieja','Hamerlak'),(5,7,'Aleksandra','Kasprolewicz');
+INSERT INTO `klient` VALUES (2,3,'Kamil','Tumulec'),(3,5,'Krzysztof','Kononowicz'),(4,6,'Nadzieja','Hamerlak'),(5,7,'Aleksandra','Kasprolewicz'),(6,8,'Natalia','Łuszcz');
 /*!40000 ALTER TABLE `klient` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -97,7 +95,7 @@ CREATE TABLE `termin` (
 
 LOCK TABLES `termin` WRITE;
 /*!40000 ALTER TABLE `termin` DISABLE KEYS */;
-INSERT INTO `termin` VALUES (2,'2023-06-23 02:48:08','Niezaakceptowany',4),(3,'2023-07-01 02:48:08','Zaakceptowany',3);
+INSERT INTO `termin` VALUES (1,'2023-06-30 12:30:00','Zaakceptowany',6),(2,'2023-06-29 12:32:00','Zaakceptowany',4),(3,'2023-06-30 17:40:02','Niezaakceptowany',4),(4,'2023-06-30 12:00:00','Niezaakceptowany',2);
 /*!40000 ALTER TABLE `termin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -125,6 +123,7 @@ CREATE TABLE `transport` (
 
 LOCK TABLES `transport` WRITE;
 /*!40000 ALTER TABLE `transport` DISABLE KEYS */;
+INSERT INTO `transport` VALUES (1,'2023-06-30 12:30:00','Wrocław-Kraków',1),(2,'2023-06-30 03:30:00','Wrocław-Warszawa',1),(3,'2023-06-29 17:30:00','Poznań-Kielce',1);
 /*!40000 ALTER TABLE `transport` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -149,7 +148,7 @@ CREATE TABLE `ulga` (
 
 LOCK TABLES `ulga` WRITE;
 /*!40000 ALTER TABLE `ulga` DISABLE KEYS */;
-INSERT INTO `ulga` VALUES (0,2),(2,3),(3,4),(3,5);
+INSERT INTO `ulga` VALUES (0,2),(2,3),(3,4),(3,5),(2,6);
 /*!40000 ALTER TABLE `ulga` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,7 +173,7 @@ CREATE TABLE `uzytkownicy` (
 
 LOCK TABLES `uzytkownicy` WRITE;
 /*!40000 ALTER TABLE `uzytkownicy` DISABLE KEYS */;
-INSERT INTO `uzytkownicy` VALUES ('prac1','qwert',2),('klient1','qwerty',3),('prac2','KaMil2',4),('klient2','qwerty',5),('nadeya','Nadeya',6),('ola','niewiemxD',7);
+INSERT INTO `uzytkownicy` VALUES ('maju','maj',2),('klient1','qwerty',3),('kamil','kamilek123',4),('klient2','qwerty',5),('nadeya','Nadeya',6),('ola','haslo',7),('luszczynka','bdjqp',8);
 /*!40000 ALTER TABLE `uzytkownicy` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -202,7 +201,7 @@ CREATE TABLE `wyniki_badan` (
 
 LOCK TABLES `wyniki_badan` WRITE;
 /*!40000 ALTER TABLE `wyniki_badan` DISABLE KEYS */;
-INSERT INTO `wyniki_badan` VALUES (2,'0 RH-','W normie',4),(3,'A RH-','Podwyższone leukocyty',2),(4,'AB RH+','W normie',3),(5,'Tak','W normie',5);
+INSERT INTO `wyniki_badan` VALUES (1,'A RH+','W normie',6),(2,'0 RH-','W normie',4),(3,'A RH-','Podwyższone leukocyty',2),(4,'AB RH+','W normie',3),(5,'B RH-','W normie',5);
 /*!40000 ALTER TABLE `wyniki_badan` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -215,4 +214,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-17  3:38:50
+-- Dump completed on 2023-06-18 17:53:53

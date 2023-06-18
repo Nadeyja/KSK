@@ -47,8 +47,7 @@ namespace KSK
             int id_transport = 1;
             int temp = 1;
             DateTime date = dateTimePicker1.Value;
-            string timeString = date.ToString("yyyy-MM-dd hh:mm:ss");
-            MessageBox.Show(timeString, "Transport", MessageBoxButtons.OK);
+            string timeString = date.ToString("yyyy-MM-dd HH:mm:ss");
             con.Open();
             command = new MySqlCommand("select ID_Transport from transport order by ID_Transport", con);
             reader = command.ExecuteReader();

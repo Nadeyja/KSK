@@ -24,7 +24,7 @@ namespace KSK
                 string haslo = reader2.GetString(0);
                 if (haslo == password.Text)
                 {
-                    MessageBox.Show("Uda³o siê zalogowaæ, id u¿ytkownika: " + id +"   " + haslo + "     " + password.Text, "", MessageBoxButtons.OK);
+                    MessageBox.Show("Logowanie siê powiod³o","", MessageBoxButtons.OK);
                     connection.Close();
 
                     return id;

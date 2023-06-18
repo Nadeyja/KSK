@@ -52,8 +52,7 @@ namespace KSK
             int id_termin = 1;
             int temp = 1;
             DateTime date = dateTimePicker1.Value;
-            string timeString = date.ToString("yyyy-MM-dd hh:mm:ss");
-            MessageBox.Show(timeString, "Wyniki", MessageBoxButtons.OK);
+            string timeString = date.ToString("yyyy-MM-dd HH:mm:ss");
             con.Open();
             command = new MySqlCommand("select ID_Termin from termin order by ID_Termin", con);
             reader = command.ExecuteReader();

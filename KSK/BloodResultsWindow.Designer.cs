@@ -45,11 +45,12 @@
             button1.TabIndex = 0;
             button1.Text = "Dodaj lub nadpisz wyniki badań";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(62, 37);
+            label1.Location = new Point(66, 37);
             label1.Name = "label1";
             label1.Size = new Size(55, 15);
             label1.TabIndex = 1;
@@ -57,16 +58,16 @@
             // 
             // label2
             // 
-            label2.Location = new Point(42, 79);
+            label2.Location = new Point(48, 81);
             label2.Name = "label2";
-            label2.Size = new Size(75, 21);
+            label2.Size = new Size(73, 21);
             label2.TabIndex = 2;
             label2.Text = "Grupa krwi";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(12, 121);
+            label3.Location = new Point(12, 124);
             label3.Name = "label3";
             label3.Size = new Size(109, 15);
             label3.TabIndex = 3;
@@ -97,7 +98,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(238, 254);
+            ClientSize = new Size(239, 254);
             Controls.Add(textBox3);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
